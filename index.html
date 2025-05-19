@@ -52,14 +52,15 @@
         }
         
         /* Header moderno con gradiente */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 3rem 0 6rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+header {
+    background: white; /* Plain white background */
+    color: var(--dark); /* Dark text for contrast */
+    padding: 3rem 0 6rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--light-gray); /* Optional subtle border */
+}
         
         header::after {
             content: '';
