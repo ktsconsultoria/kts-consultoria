@@ -42,13 +42,25 @@
             line-height: 1.6;
             color: var(--dark);
             background-color: white;
+            padding-top: 100px; /* Espacio para el header fijo */
         }
         
         /* Header */
         header {
             background-color: white;
-            padding: 2rem 0;
+            padding: 1rem 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        /* Efecto de header reducido al hacer scroll */
+        header.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         .header-container {
@@ -64,11 +76,18 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            transition: all 0.3s ease;
         }
         
         .logo-img {
-            height: 150px;
+            height: 80px;
             width: auto;
+            transition: all 0.3s ease;
+        }
+        
+        /* Logo reducido al hacer scroll */
+        header.scrolled .logo-img {
+            height: 60px;
         }
         
         /* Navigation */
@@ -111,8 +130,9 @@
                         url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            padding: 5rem 2rem;
+            padding: 4rem 2rem;
             text-align: center;
+            margin-top: -20px; /* Compensa el padding del body */
         }
         
         .hero-content {
@@ -305,6 +325,12 @@
             transform: translateY(-3px);
         }
         
+        /* Methodology Section */
+        .methodology-section {
+            background-color: var(--primary-light);
+            padding: 4rem 2rem;
+        }
+        
         /* CTA Section */
         .cta {
             background-color: var(--primary);
@@ -408,6 +434,10 @@
         
         /* Responsive */
         @media (max-width: 768px) {
+            body {
+                padding-top: 140px; /* Más espacio para el header en móvil */
+            }
+            
             .header-container {
                 flex-direction: column;
                 gap: 1rem;
@@ -415,6 +445,11 @@
             
             .nav-links {
                 gap: 1rem;
+            }
+            
+            .hero {
+                padding: 3rem 1rem;
+                margin-top: 0;
             }
             
             .hero h1 {
@@ -434,12 +469,21 @@
             .team-grid {
                 grid-template-columns: 1fr;
             }
+            
+            /* Ajustes para el logo en móvil */
+            .logo-img {
+                height: 70px;
+            }
+            
+            header.scrolled .logo-img {
+                height: 50px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="main-header">
         <div class="header-container">
             <div class="logo">
                 <img src="Logo-Pulso2-chico.PNG" alt="Pulso Soluciones" class="logo-img">
@@ -545,8 +589,7 @@
                 <h3 class="team-name">Carla Pizarro Riquelme</h3>
                 <p class="team-title">Co-Fundadora & Líder de Estrategia Empresarial</p>
                 <p class="team-bio">
-Carla Pizarro es Ingeniera Civil Industrial de la Universidad de Chile, con diplomados en Planificación Estratégica y Control de Gestión, y en Estrategias de Transformación Digital, ambos cursados en la Pontificia Universidad Católica de Chile. Cuenta además con certificaciones en Riesgo Operacional, Compliance y metodologías de gestión ISO. Con más de 20 años de experiencia liderando proyectos de procesos, riesgos y transformación digital en empresas financieras y consultoras Big 4, Carla ha consolidado una trayectoria enfocada en generar valor desde la estrategia hacia la ejecución operativa. Hoy, a través de Pulso, Carla lidera una propuesta especializada en digitalizar las mejores prácticas de gestión para empresas, combinando tecnología, metodologías ágiles y visión estratégica. Su enfoque está orientado a resultados concretos: ayudar a cada empresa a profesionalizar su gestión, mejorar sus procesos y alcanzar sus objetivos de negocio de forma sostenible.
-
+                    Carla Pizarro es Ingeniera Civil Industrial de la Universidad de Chile, con diplomados en Planificación Estratégica y Control de Gestión, y en Estrategias de Transformación Digital, ambos cursados en la Pontificia Universidad Católica de Chile. Cuenta además con certificaciones en Riesgo Operacional, Compliance y metodologías de gestión ISO. Con más de 20 años de experiencia liderando proyectos de procesos, riesgos y transformación digital en empresas financieras y consultoras Big 4, Carla ha consolidado una trayectoria enfocada en generar valor desde la estrategia hacia la ejecución operativa. Hoy, a través de Pulso, Carla lidera una propuesta especializada en digitalizar las mejores prácticas de gestión para empresas, combinando tecnología, metodologías ágiles y visión estratégica. Su enfoque está orientado a resultados concretos: ayudar a cada empresa a profesionalizar su gestión, mejorar sus procesos y alcanzar sus objetivos de negocio de forma sostenible.
                 </p>
                 <div class="team-social">
                     <a href="https://www.linkedin.com/in/carla-pizarro-riquelme/" target="_blank">
@@ -643,6 +686,16 @@ Carla Pizarro es Ingeniera Civil Industrial de la Universidad de Chile, con dipl
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Efecto de header al hacer scroll
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
     </script>
 </body>
