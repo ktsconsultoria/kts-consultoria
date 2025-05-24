@@ -478,7 +478,56 @@
             }
         }
     </style>
-<meta content="consultoría pymes chile, digitalización de procesos, clickup chile, eficiencia operativa, pulso soluciones" name="keywords"/><meta content="Pulso Soluciones" name="author"/></head>
+<meta content="consultoría pymes chile, digitalización de procesos, clickup chile, eficiencia operativa, pulso soluciones" name="keywords"/><meta content="Pulso Soluciones" name="author"/><style>
+/* Responsive horizontal scroll nav fix */
+nav {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+nav::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+nav a {
+  flex: 0 0 auto;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+}
+</style><style>
+/* Hamburguesa responsive */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #134e54;
+}
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  nav.show {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 999;
+  }
+}
+</style></head>
 <body>
 <!-- Header -->
 <header id="main-header">
@@ -486,7 +535,7 @@
 <div class="logo">
 <img alt="Pulso Soluciones" class="logo-img" loading="lazy" src="Logo-Pulso1.PNG"/>
 </div>
-<nav>
+<button class="menu-toggle">☰</button><nav>
 <div class="nav-links">
 <a href="#servicios">Servicios</a>
 <a href="#equipo">Equipo</a>
@@ -637,7 +686,7 @@
 <p>Únete a nuestro equipo y optimiza los procesos de nuestros clientes.</p>
 </div>
 <div style="text-align:center;">
-<a class="btn" download="" href="Rol_Programador_ClickUp.docx" style="font-size: 1rem; padding: 1rem 2rem; margin-top: 1rem;">
+<a class="btn" download="" href="Rol_Programador_ClickUp_Pulso_NPS30_PagoHora.docx" style="font-size: 1rem; padding: 1rem 2rem; margin-top: 1rem;">
             Programador de Procesos en ClickUp
         </a>
 <p style="margin-top: 0.5rem;">Haz clic para descargar la descripción del cargo.</p>
@@ -700,5 +749,13 @@
             }
         });
     </script>
-</body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+});
+</script></body>
 </html>
