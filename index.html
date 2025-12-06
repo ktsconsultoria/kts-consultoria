@@ -1,925 +1,766 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Pulso Soluciones | Procesos & Automatización</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Consultoría en procesos, automatización y sistemas en la nube para pymes y empresas industriales. Pulso Soluciones SpA." />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pulso Soluciones | Digitalización y eficiencia para pymes en Chile</title>
+<meta content="En Pulso Soluciones ayudamos a pymes chilenas a organizarse, automatizar y escalar. Diagnóstico gratuito. Resultados medibles en semanas." name="description"/>
 
-  <!-- Tipografías Google (puedes cambiarlas si quieres) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<!-- Fonts -->
+<link as="style" href="https://fonts.googleapis.com" rel="preload"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
 
-  <style>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+
+<style>
     :root {
-      --coral: #FF7452;
-      --gray-900: #222222;
-      --gray-700: #6A6A6A;
-      --gray-100: #F5F5F5;
-      --gray-050: #FAFAFA;
-      --border-soft: #E5E5E5;
-      --bg-body: #FFFFFF;
+        /* Brand Colors – nueva paleta Pulso */
+        --primary: #FF7452;                 /* Coral Pulso */
+        --primary-dark: #E45F40;            /* Coral un poco más oscuro */
+        --primary-light: rgba(255,116,82,0.10);
+        --secondary: #000000;               /* Negro como acento secundario */
+        --light: #FFFFFF;                   /* Blanco */
+        --dark: #000000;                    /* Negro principal */
+        --gray: #4A4A4A;                    /* Gris neutro para textos */
+        --light-gray: #E5E5E5;              /* Gris claro para bordes/fondos */
+
+        /* Typography */
+        --font-body: 'Open Sans', sans-serif;
+        --font-heading: 'Montserrat', sans-serif;
     }
 
     * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg-body);
-      color: var(--gray-900);
-      scroll-behavior: smooth;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     body {
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* Layout base */
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
+        font-family: var(--font-body);
+        line-height: 1.6;
+        color: var(--dark);
+        background-color: var(--light);
+        padding-top: 100px; /* Espacio para el header fijo */
     }
 
     /* Header */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-soft);
+        background-color: var(--light);
+        padding: 1rem 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
     }
 
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 0;
+    /* Efecto de header reducido al hacer scroll */
+    header.scrolled {
+        padding: 0.5rem 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+    .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
     }
 
-    .brand-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: var(--coral);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        transition: all 0.3s ease;
     }
 
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    .logo-img {
+        height: 80px;
+        width: auto;
+        transition: all 0.3s ease;
     }
 
-    .brand-text-title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 1.05rem;
+    /* Logo reducido al hacer scroll */
+    header.scrolled .logo-img {
+        height: 60px;
     }
 
-    .brand-text-sub {
-      font-size: 0.8rem;
-      color: var(--gray-700);
+    /* Navigation */
+    .nav-links {
+        display: flex;
+        gap: 2rem;
     }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      font-size: 0.9rem;
+    .nav-links a {
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        position: relative;
     }
 
-    .nav a {
-      color: var(--gray-700);
-      font-weight: 400;
+    .nav-links a:hover {
+        color: var(--primary);
     }
 
-    .nav a:hover {
-      color: var(--gray-900);
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--primary);
+        transition: width 0.3s ease;
     }
 
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      background: var(--coral);
-      color: #fff;
-      font-size: 0.88rem;
-      font-weight: 500;
-      box-shadow: 0 8px 18px rgba(255, 116, 82, 0.25);
+    .nav-links a:hover::after {
+        width: 100%;
     }
 
-    .nav-cta:hover {
-      opacity: 0.92;
-    }
-
-    /* Hero */
+    /* Hero Section */
     .hero {
-      padding: 3.5rem 0 3rem;
+        background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                    url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+        background-size: cover;
+        background-position: center;
+        padding: 4rem 2rem;
+        text-align: center;
+        margin-top: -20px; /* Compensa el padding del body */
     }
 
-    .hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 2.5rem;
-      align-items: center;
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
     }
 
-    .hero-kicker {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.78rem;
-      color: var(--coral);
-      margin-bottom: 0.4rem;
-      font-weight: 600;
+    .hero h1 {
+        font-family: var(--font-heading);
+        font-size: 2.5rem;
+        color: var(--dark);
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
     }
 
-    .hero-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.1rem;
-      line-height: 1.2;
-      margin: 0.3rem 0 0.8rem;
+    .hero p {
+        font-size: 1.2rem;
+        color: var(--gray);
+        margin-bottom: 2rem;
     }
 
-    .hero-highlight {
-      color: var(--coral);
+    .btn {
+        display: inline-block;
+        background-color: var(--primary);
+        color: var(--light);
+        padding: 0.8rem 2rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 2px solid var(--primary);
     }
 
-    .hero-subtitle {
-      font-size: 0.98rem;
-      color: var(--gray-700);
-      margin-bottom: 1.2rem;
-      max-width: 34rem;
+    .btn:hover {
+        background-color: transparent;
+        color: var(--primary);
     }
 
-    .hero-bullets {
-      display: grid;
-      gap: 0.4rem;
-      font-size: 0.9rem;
-      color: var(--gray-700);
-      margin-bottom: 1.4rem;
+    .btn-secondary {
+        background-color: transparent;
+        color: var(--primary);
+        margin-left: 1rem;
     }
 
-    .hero-bullet::before {
-      content: "•";
-      color: var(--coral);
-      margin-right: 0.5rem;
+    .btn-secondary:hover {
+        background-color: var(--primary);
+        color: var(--light);
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      align-items: center;
-      margin-bottom: 1.2rem;
-    }
-
-    .btn-primary {
-      padding: 0.7rem 1.3rem;
-      border-radius: 999px;
-      background: var(--coral);
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 500;
-      box-shadow: 0 10px 22px rgba(255, 116, 82, 0.3);
-    }
-
-    .btn-primary:hover {
-      opacity: 0.93;
-    }
-
-    .btn-secondary-link {
-      font-size: 0.9rem;
-      color: var(--gray-700);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-
-    .hero-footnote {
-      font-size: 0.8rem;
-      color: var(--gray-700);
-    }
-
-    .hero-card {
-      border-radius: 1.2rem;
-      background: linear-gradient(135deg, #FFFFFF, #FFF4EF);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      padding: 1.4rem 1.3rem;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.07);
-    }
-
-    .hero-card-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-    }
-
-    .hero-metric {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.4rem;
-      font-size: 0.85rem;
-    }
-
-    .hero-metric-label {
-      color: var(--gray-700);
-    }
-
-    .hero-metric-value {
-      font-weight: 500;
-      color: var(--gray-900);
-    }
-
-    .hero-divider {
-      height: 1px;
-      background: rgba(0, 0, 0, 0.06);
-      margin: 0.7rem 0;
-    }
-
-    .hero-tagline {
-      font-size: 0.8rem;
-      color: var(--gray-700);
-    }
-
-    /* Secciones genéricas */
-    section {
-      padding: 3rem 0;
-    }
-
-    .section-header {
-      margin-bottom: 1.8rem;
-    }
-
-    .section-kicker {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.78rem;
-      color: var(--coral);
-      font-weight: 600;
-      margin-bottom: 0.3rem;
+    /* Sections */
+    .section {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .section-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.4rem;
-      margin: 0;
+        text-align: center;
+        margin-bottom: 3rem;
     }
 
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--gray-700);
-      max-width: 32rem;
-      margin-top: 0.4rem;
+    .section-title h2 {
+        font-family: var(--font-heading);
+        font-size: 2rem;
+        color: var(--dark);
+        margin-bottom: 1rem;
     }
 
-    /* Servicios */
-    .section-alt-bg {
-      background: var(--gray-050);
-      border-top: 1px solid var(--border-soft);
-      border-bottom: 1px solid var(--border-soft);
+    .section-title p {
+        color: var(--gray);
+        max-width: 700px;
+        margin: 0 auto;
     }
 
+    /* Services Grid */
     .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
     }
 
     .service-card {
-      border-radius: 1rem;
-      background: #FFFFFF;
-      border: 1px solid var(--border-soft);
-      padding: 1.1rem 1.1rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+        background-color: var(--light);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        border-top: 4px solid var(--primary);
     }
 
-    .service-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      border-radius: 999px;
-      padding: 0.25rem 0.6rem;
-      background: #FFF5F1;
-      color: var(--coral);
-      font-size: 0.7rem;
-      font-weight: 500;
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
-    .service-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.98rem;
-      font-weight: 600;
-      margin: 0.2rem 0 0.1rem;
+    .service-icon {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
     }
 
-    .service-text {
-      font-size: 0.86rem;
-      color: var(--gray-700);
-      flex: 1;
+    .service-card h3 {
+        font-family: var(--font-heading);
+        margin-bottom: 1rem;
+        color: var(--dark);
     }
 
-    .service-footer {
-      font-size: 0.8rem;
-      color: var(--gray-700);
-      margin-top: 0.2rem;
+    .service-card p {
+        color: var(--gray);
+        font-size: 0.95rem;
     }
 
-    /* Metodología */
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1rem;
+    /* Team Section */
+    .team-section {
+        background-color: var(--primary-light);
+        padding: 4rem 2rem;
     }
 
-    .step-card {
-      border-radius: 1rem;
-      border: 1px solid var(--border-soft);
-      padding: 1rem;
-      background: #FFFFFF;
-    }
-
-    .step-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 1.5rem;
-      height: 1.5rem;
-      border-radius: 999px;
-      background: #FFF5F1;
-      color: var(--coral);
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .step-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.95rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .step-text {
-      font-size: 0.85rem;
-      color: var(--gray-700);
-    }
-
-    .method-note {
-      font-size: 0.85rem;
-      color: var(--gray-700);
-      margin-top: 1.1rem;
-    }
-
-    /* Equipo */
     .team-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.4rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    .member-card {
-      border-radius: 1rem;
-      border: 1px solid var(--border-soft);
-      padding: 1.1rem 1.1rem 1.1rem;
-      background: #FFFFFF;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
+    .team-card {
+        background-color: var(--light);
+        border-radius: 8px;
+        padding: 2.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
     }
 
-    .member-name {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
+    .team-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 1.5rem;
+        border: 5px solid var(--light-gray);
+        transition: all 0.3s ease;
     }
 
-    .member-role {
-      font-size: 0.84rem;
-      color: var(--coral);
-      font-weight: 500;
+    .team-card:hover .team-photo {
+        border-color: var(--primary);
     }
 
-    .member-bio {
-      font-size: 0.86rem;
-      color: var(--gray-700);
+    .team-name {
+        font-family: var(--font-heading);
+        font-size: 1.4rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
     }
 
-    /* Casos / Clientes */
-    .cases-block {
-      border-radius: 1rem;
-      border: 1px dashed var(--border-soft);
-      padding: 1.1rem 1.1rem 1.3rem;
-      background: #FFFFFF;
-      font-size: 0.9rem;
-      color: var(--gray-700);
+    .team-title {
+        color: var(--secondary);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
     }
 
-    .cases-block ul {
-      margin: 0.6rem 0 0.4rem 1.1rem;
-      padding: 0;
+    .team-bio {
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+        text-align: left;
+        line-height: 1.7;
     }
 
-    .cases-block li {
-      margin-bottom: 0.25rem;
+    .team-social {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
     }
 
-    /* Contacto */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 1.6rem;
-      align-items: flex-start;
+    .team-social a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--light-gray);
+        color: var(--dark);
+        transition: all 0.3s ease;
     }
 
-    .contact-card {
-      border-radius: 1rem;
-      border: 1px solid var(--border-soft);
-      padding: 1.3rem 1.2rem 1.4rem;
-      background: #FFFFFF;
+    .team-social a:hover {
+        background-color: var(--primary);
+        color: var(--light);
+        transform: translateY(-3px);
     }
 
-    .contact-field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      margin-bottom: 0.7rem;
-      font-size: 0.86rem;
+    /* CTA Section */
+    .cta {
+        background-color: var(--primary);
+        color: var(--light);
+        text-align: center;
+        padding: 4rem 2rem;
     }
 
-    .contact-label {
-      font-weight: 500;
-      font-size: 0.8rem;
-      color: var(--gray-700);
+    .cta h2 {
+        font-family: var(--font-heading);
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
     }
 
-    .contact-input,
-    .contact-textarea {
-      border-radius: 0.55rem;
-      border: 1px solid var(--border-soft);
-      padding: 0.45rem 0.6rem;
-      font-family: inherit;
-      font-size: 0.86rem;
-    }
-
-    .contact-textarea {
-      min-height: 4.5rem;
-      resize: vertical;
-    }
-
-    .contact-hint {
-      font-size: 0.78rem;
-      color: var(--gray-700);
-      margin-top: 0.4rem;
-    }
-
-    .contact-info {
-      font-size: 0.88rem;
-      color: var(--gray-700);
-      line-height: 1.7;
-    }
-
-    .contact-info strong {
-      color: var(--gray-900);
+    .cta p {
+        max-width: 700px;
+        margin: 0 auto 2rem;
+        opacity: 0.9;
     }
 
     /* Footer */
     footer {
-      border-top: 1px solid var(--border-soft);
-      padding: 1.4rem 0 1.6rem;
-      font-size: 0.8rem;
-      color: var(--gray-700);
-      background: #FFFFFF;
-      margin-top: 1.5rem;
+        background-color: var(--dark);
+        color: var(--light);
+        padding: 4rem 2rem 2rem;
     }
 
-    .footer-inner {
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+    }
+
+    .footer-logo {
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+        height: 120px;
+    }
+
+    .footer-about p {
+        color: var(--light-gray);
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-links h3 {
+        font-family: var(--font-heading);
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .footer-links h3::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 40px;
+        height: 2px;
+        background-color: var(--primary);
+    }
+
+    .footer-links ul {
+        list-style: none;
+    }
+
+    .footer-links li {
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+        color: var(--light-gray);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--light);
+        padding-left: 5px;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--light-gray);
+        font-size: 0.9rem;
+    }
+
+    /* Responsive horizontal scroll nav fix */
+    nav {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.8rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+    }
+    nav::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
+    }
+    nav a {
+      flex: 0 0 auto;
+      padding: 0.5rem 1rem;
+      white-space: nowrap;
     }
 
-    .footer-right {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+    /* Hamburguesa responsive */
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--dark);
     }
 
-    .footer-right a {
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      text-decoration-thickness: 1px;
-    }
+    @media (max-width: 768px) {
+      body {
+        padding-top: 140px; /* Más espacio para el header en móvil */
+      }
 
-    /* Responsive */
-    @media (max-width: 960px) {
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
       }
-      .hero-card {
-        order: -1;
-        margin-bottom: 1.2rem;
-      }
-      .services-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .steps-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .team-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
 
-    @media (max-width: 640px) {
-      .header-inner {
-        padding: 0.6rem 0;
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--light);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       }
-      .nav {
-        display: none; /* para partir minimal: se puede reemplazar por menú mobile después */
+
+      nav.show {
+        display: flex;
       }
+
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        z-index: 999;
+      }
+
       .hero {
-        padding: 2.4rem 0 2.4rem;
+        padding: 3rem 1rem;
+        margin-top: 0;
       }
-      .hero-title {
-        font-size: 1.65rem;
+
+      .hero h1 {
+        font-size: 2rem;
       }
-      section {
-        padding: 2.4rem 0;
+
+      .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
       }
-      .steps-grid {
-        grid-template-columns: minmax(0, 1fr);
+
+      .btn-secondary {
+        margin-left: 0;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-img {
+        height: 70px;
+      }
+
+      header.scrolled .logo-img {
+        height: 50px;
       }
     }
-  </style>
+</style>
+
+<meta content="consultoría pymes chile, digitalización de procesos, clickup chile, eficiencia operativa, pulso soluciones" name="keywords"/>
+<meta content="Pulso Soluciones" name="author"/>
+
 </head>
 <body>
-<div class="page">
 
-  <!-- Header -->
-  <header>
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="brand-logo">
-          <!-- Reemplaza src con la ruta real de tu logo coral -->
-          <img src="assets/logo-pulso-coral.png" alt="Pulso Soluciones" />
-        </div>
-        <div>
-          <div class="brand-text-title">Pulso Soluciones SpA</div>
-          <div class="brand-text-sub">Procesos · Automatización · Sistemas</div>
-        </div>
-      </div>
-      <nav class="nav">
-        <a href="#inicio">Inicio</a>
+<!-- Header -->
+<header id="main-header">
+  <div class="header-container">
+    <div class="logo">
+      <!-- NUEVO LOGO -->
+      <img alt="Pulso Soluciones" class="logo-img" loading="lazy" src="pulso-logo.png"/>
+    </div>
+
+    <button class="menu-toggle">☰</button>
+    <nav>
+      <div class="nav-links">
         <a href="#servicios">Servicios</a>
-        <a href="#metodologia">Metodología</a>
         <a href="#equipo">Equipo</a>
+        <a href="#metodologia">Metodología</a>
+        <a href="#oportunidades">Oportunidades</a>
         <a href="#contacto">Contacto</a>
-        <a href="#contacto" class="nav-cta">Agenda una llamada</a>
-      </nav>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Optimizamos los procesos de tu empresa</h1>
+    <p>Soluciones probadas, efectivas y personalizadas.</p>
+    <div class="hero-buttons">
+      <a class="btn" href="#contacto">Contactar Ahora</a>
+      <a class="btn btn-secondary" href="#servicios">Nuestros Servicios</a>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- Hero -->
-  <main id="inicio">
-    <section class="hero">
-      <div class="container hero-inner">
-        <div>
-          <div class="hero-kicker">Consultoría en procesos y sistemas</div>
-          <h1 class="hero-title">
-            Ordenamos tu operación y la <span class="hero-highlight">llevamos a la nube</span> con foco en pymes y empresas industriales.
-          </h1>
-          <p class="hero-subtitle">
-            Diseñamos flujos claros, implementamos sistemas como ClickUp, Make y Google Workspace,
-            y acompañamos a tu equipo para que trabajen con más visibilidad y menos caos.
-          </p>
-          <div class="hero-bullets">
-            <div class="hero-bullet">Implementación de tableros y flujos en ClickUp adaptados a tu negocio.</div>
-            <div class="hero-bullet">Automatización con Make (Integromat) para eliminar tareas repetitivas.</div>
-            <div class="hero-bullet">Acompañamiento cercano, con entregables concretos cada semana.</div>
-          </div>
-          <div class="hero-actions">
-            <a href="#contacto" class="btn-primary">Quiero hablar con Pulso</a>
-            <a href="#metodologia" class="btn-secondary-link">Ver cómo trabajamos</a>
-          </div>
-          <div class="hero-footnote">
-            Basado en experiencia en operaciones y proyectos en empresas como LATAM, Zara USA y Deutsche Bank.
-          </div>
-        </div>
-
-        <aside class="hero-card" aria-label="Resumen de la propuesta de valor">
-          <div class="hero-card-title">¿Qué ganan las empresas que trabajan con Pulso?</div>
-          <div class="hero-metric">
-            <span class="hero-metric-label">Más claridad</span>
-            <span class="hero-metric-value">1 flujo unificado en vez de 10 planillas</span>
-          </div>
-          <div class="hero-metric">
-            <span class="hero-metric-label">Mejor coordinación</span>
-            <span class="hero-metric-value">Tareas trazables por área y responsable</span>
-          </div>
-          <div class="hero-metric">
-            <span class="hero-metric-label">Decisiones con datos</span>
-            <span class="hero-metric-value">Dashboards simples para dueños y líderes</span>
-          </div>
-          <div class="hero-divider"></div>
-          <div class="hero-tagline">
-            Empezamos siempre por un primer módulo (por ejemplo, <strong>ventas</strong> o
-            <strong>postventa</strong>) y luego escalamos al resto de la empresa.
-          </div>
-        </aside>
+<!-- Services Section -->
+<section class="section" id="servicios">
+  <div class="section-title">
+    <h2>Nuestros Servicios</h2>
+    <p>Transformamos áreas clave de tu negocio con soluciones probadas</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-chart-line"></i>
       </div>
-    </section>
-
-    <!-- Servicios -->
-    <section id="servicios" class="section-alt-bg">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Servicios</div>
-          <h2 class="section-title">Lo que hacemos en Pulso</h2>
-          <p class="section-subtitle">
-            Te acompañamos desde el diseño del flujo hasta la puesta en marcha del sistema,
-            con foco en que el equipo lo use de verdad en el día a día.
-          </p>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-chip">ClickUp · CRM · Operaciones</div>
-            <h3 class="service-title">Diseño de procesos & tableros en ClickUp</h3>
-            <p class="service-text">
-              Modelamos tu negocio en ClickUp: flujos comerciales, producción, instalación,
-              servicio al cliente y tareas internas. Definimos estados, campos, vistas y
-              dashboards para que cada área sepa qué hacer y en qué está cada proyecto.
-            </p>
-            <p class="service-footer">
-              Ideal para empresas con muchos proyectos abiertos en paralelo y varios equipos involucrados.
-            </p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-chip">Automatización · Make</div>
-            <h3 class="service-title">Automatización entre herramientas</h3>
-            <p class="service-text">
-              Usamos Make (Integromat) para conectar formularios, correos, planillas y sistemas.
-              Desde crear tareas automáticamente cuando llega un lead, hasta actualizar estados
-              al aprobar una cotización o emitir un documento.
-            </p>
-            <p class="service-footer">
-              Siempre cuidando el costo de operaciones y dejando flujos documentados.
-            </p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-chip">Acompañamiento · Capacitación</div>
-            <h3 class="service-title">Onboarding, soporte & mejora continua</h3>
-            <p class="service-text">
-              No se trata solo de “configurar y desaparecer”. Entrenamos a tu equipo, generamos
-              documentación simple, y ajustamos el sistema en base al uso real para que la
-              solución siga viva y útil en el tiempo.
-            </p>
-            <p class="service-footer">
-              Puedes mantenernos como soporte recurrente o cerrar un proyecto con cierre definido.
-            </p>
-          </article>
-        </div>
+      <h3>Ventas &amp; CRM</h3>
+      <p>Seguimiento de oportunidades, pipeline de ventas y gestión de clientes integrada.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-bullhorn"></i>
       </div>
-    </section>
-
-    <!-- Metodología -->
-    <section id="metodologia">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Metodología</div>
-          <h2 class="section-title">Cómo trabajamos contigo</h2>
-          <p class="section-subtitle">
-            Estructuramos el trabajo en etapas claras, con foco en que veas avances semana a semana
-            y que tu equipo entienda qué se está haciendo y por qué.
-          </p>
-        </div>
-
-        <div class="steps-grid">
-          <article class="step-card">
-            <div class="step-number">1</div>
-            <h3 class="step-title">Diagnóstico rápido</h3>
-            <p class="step-text">
-              Conversamos sobre tu operación actual, dolores principales y prioridades.
-              Mapeamos qué procesos atacaremos primero y con qué herramientas.
-            </p>
-          </article>
-
-          <article class="step-card">
-            <div class="step-number">2</div>
-            <h3 class="step-title">Diseño del sistema</h3>
-            <p class="step-text">
-              Definimos módulos, listas, campos, automatizaciones y vistas.
-              Te mostramos un prototipo inicial en ClickUp para validar antes de construir todo.
-            </p>
-          </article>
-
-          <article class="step-card">
-            <div class="step-number">3</div>
-            <h3 class="step-title">Implementación por sprints</h3>
-            <p class="step-text">
-              Trabajamos por sprints cortos (1–2 semanas), con entregables concretos:
-              tableros listos, automatizaciones funcionando y usuarios probando.
-            </p>
-          </article>
-
-          <article class="step-card">
-            <div class="step-number">4</div>
-            <h3 class="step-title">Entrenamiento & soporte</h3>
-            <p class="step-text">
-              Capacitamos a tu equipo, ajustamos según feedback, y dejamos documentación
-              para que puedan seguir mejorando el sistema, con o sin nosotros.
-            </p>
-          </article>
-        </div>
-
-        <p class="method-note">
-          Usamos principios de metodología ágil, pero en un lenguaje simple y cercano:
-          reuniones acotadas, objetivos claros y foco en lo que genera valor rápido.
-        </p>
+      <h3>Marketing</h3>
+      <p>Planificación de campañas, calendario editorial y análisis de resultados.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-users"></i>
       </div>
-    </section>
-
-    <!-- Equipo -->
-    <section id="equipo" class="section-alt-bg">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Equipo</div>
-          <h2 class="section-title">Quiénes somos</h2>
-          <p class="section-subtitle">
-            Un equipo pequeño, cercano y muy involucrado en los proyectos. Preferimos trabajar
-            con pocos clientes a la vez, pero de forma profunda y responsable.
-          </p>
-        </div>
-
-        <div class="team-grid">
-          <article class="member-card">
-            <div class="member-name">Matías Pulido</div>
-            <div class="member-role">Fundador &amp; Consultor Senior</div>
-            <p class="member-bio">
-              Más de 10 años liderando proyectos de procesos y operaciones en empresas como LATAM,
-              Zara USA y Deutsche Bank. Hoy se enfoca en ayudar a pymes y empresas industriales
-              a ordenar su operación, diseñar sistemas en la nube y generar claridad en la gestión diaria.
-            </p>
-          </article>
-
-          <article class="member-card">
-            <div class="member-name">Constanza Pulido</div>
-            <div class="member-role">Asistente Comercial &amp; Coordinación de Proyectos</div>
-            <p class="member-bio">
-              Coordina la agenda con clientes, apoya el seguimiento de tareas en ClickUp y cuida que
-              los compromisos del proyecto se cumplan. Es el enlace operativo entre Pulso y los equipos
-              internos de nuestros clientes.
-            </p>
-          </article>
-        </div>
+      <h3>Recursos Humanos</h3>
+      <p>Gestión de equipos, onboarding digital y evaluación de desempeño.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-cogs"></i>
       </div>
-    </section>
-
-    <!-- Casos / Clientes -->
-    <section id="casos">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Clientes y contexto</div>
-          <h2 class="section-title">Con qué tipo de empresas calza mejor Pulso</h2>
-          <p class="section-subtitle">
-            Más que por industria, trabajamos bien con cierto tipo de desafío operativo:
-            muchas piezas en movimiento, varios equipos involucrados y necesidad de orden.
-          </p>
-        </div>
-
-        <div class="cases-block">
-          <p>
-            Hemos trabajado (y estamos trabajando) con empresas que:
-          </p>
-          <ul>
-            <li>Venden soluciones a medida que combinan venta, diseño, fabricación e instalación.</li>
-            <li>Tienen muchos proyectos abiertos al mismo tiempo, con varias áreas involucradas.</li>
-            <li>Han crecido rápido y necesitan ordenar su flujo de trabajo y su información.</li>
-            <li>Quieren que los dueños y líderes tengan más visibilidad sin depender de 10 planillas distintas.</li>
-          </ul>
-          <p>
-            Si te hace sentido este tipo de realidad, probablemente podemos ayudarte a
-            diseñar un sistema que acompañe tu crecimiento y le dé más tranquilidad a tu equipo.
-          </p>
-        </div>
+      <h3>Operaciones</h3>
+      <p>Gestión de proyectos, tareas recurrentes y flujos de trabajo optimizados.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-headset"></i>
       </div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto" class="section-alt-bg">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Contacto</div>
-          <h2 class="section-title">Conversemos de tu proceso</h2>
-          <p class="section-subtitle">
-            Cuéntanos brevemente en qué etapa está tu empresa y qué te gustaría ordenar.
-            Te responderemos para coordinar una llamada corta y ver si tiene sentido avanzar.
-          </p>
-        </div>
-
-        <div class="contact-grid">
-          <div>
-            <form class="contact-card">
-              <div class="contact-field">
-                <label class="contact-label" for="nombre">Nombre</label>
-                <input id="nombre" type="text" class="contact-input" placeholder="Tu nombre" />
-              </div>
-              <div class="contact-field">
-                <label class="contact-label" for="empresa">Empresa</label>
-                <input id="empresa" type="text" class="contact-input" placeholder="Nombre de tu empresa" />
-              </div>
-              <div class="contact-field">
-                <label class="contact-label" for="correo">Correo</label>
-                <input id="correo" type="email" class="contact-input" placeholder="tucorreo@empresa.cl" />
-              </div>
-              <div class="contact-field">
-                <label class="contact-label" for="mensaje">Contexto</label>
-                <textarea id="mensaje" class="contact-textarea" placeholder="Cuéntanos brevemente qué te gustaría ordenar o mejorar."></textarea>
-              </div>
-              <button type="button" class="btn-primary">
-                Enviar mensaje
-              </button>
-              <div class="contact-hint">
-                Este formulario puede conectarse más adelante con tu sistema (por ejemplo, crear un lead automático en ClickUp).
-              </div>
-            </form>
-          </div>
-
-          <div class="contact-info">
-            <p><strong>Correo principal:</strong><br/>
-              <a href="mailto:matiaspulido@pulsosoluciones.cl">matiaspulido@pulsosoluciones.cl</a>
-            </p>
-            <p><strong>Ubicación:</strong><br/>
-              Pulso Soluciones SpA · Chile (con trabajo remoto para clientes en Chile y Europa).
-            </p>
-            <p><strong>Reuniones:</strong><br/>
-              Coordinamos reuniones remotas por Google Meet. Podemos ajustar horarios para
-              compatibilizar Chile y Europa cuando sea necesario.
-            </p>
-          </div>
-        </div>
+      <h3>Servicio al Cliente</h3>
+      <p>Seguimiento de tickets, SLA medibles y base de conocimiento centralizada.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-calculator"></i>
       </div>
-    </section>
+      <h3>Contabilidad</h3>
+      <p>Seguimiento de gastos, facturación electrónica y reportes financieros.</p>
+    </div>
+  </div>
+</section>
 
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-inner">
-      <div>
-        © <span id="year"></span> Pulso Soluciones SpA. Todos los derechos reservados.
-      </div>
-      <div class="footer-right">
-        <span>RUT: 78.177.046-9</span>
-        <a href="#inicio">Volver arriba</a>
+<!-- Team Section -->
+<section class="team-section" id="equipo">
+  <div class="section-title">
+    <h2>Nuestro Equipo </h2>
+    <p>Expertos con 40 años de experiencia acumulada transformando empresas</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <img alt="Matías Pulido" class="team-photo" loading="lazy" src="matias-pulido.jpeg"/>
+      <h3 class="team-name">Matías Pulido</h3>
+      <p class="team-title">Líder de Soluciones en Pulso</p>
+      <p class="team-bio">
+        Matías Pulido es Ingeniero Civil Industrial con un Magíster en Gestión de Operaciones de la Universidad de Chile y certificaciones en Gestión de Proyectos (PMP &amp; Agile) y Optimización de Procesos mediante la metodología Lean. A lo largo de casi 20 años, ha liderado iniciativas de mejora continua y eficiencia operativa en empresas de clase mundial como LATAM Airlines, Zara USA y Deutsche Bank, desempeñándose en diversos mercados, incluyendo Chile, Estados Unidos y Europa. ​Su trayectoria le ha permitido identificar y adaptar las mejores prácticas corporativas para el contexto de las empresas chilenas. A través de Pulso, Matías se dedica a transferir este conocimiento, ofreciendo herramientas y metodologías que impulsan a las empresas a brindar servicios de excelencia y a destacarse en sus respectivos mercados.
+      </p>
+      <div class="team-social">
+        <a href="https://www.linkedin.com/in/matiaspulido/" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
       </div>
     </div>
-  </footer>
+    <div class="team-card">
+      <img alt="Carla Pizarro" class="team-photo" loading="lazy" src="carla-pizarro.jpeg"/>
+      <h3 class="team-name">Carla Pizarro Riquelme</h3>
+      <p class="team-title">Encargada de Diseño de Soluciones</p>
+      <p class="team-bio">
+        Carla Pizarro es Ingeniera Civil Industrial de la Universidad de Chile, con diplomados en Planificación Estratégica y Control de Gestión, y en Estrategias de Transformación Digital, ambos cursados en la Pontificia Universidad Católica de Chile. Cuenta además con certificaciones en Riesgo Operacional, Compliance y metodologías de gestión ISO. Con más de 20 años de experiencia liderando proyectos de procesos, riesgos y transformación digital en empresas financieras y consultoras Big 4, Carla ha consolidado una trayectoria enfocada en generar valor desde la estrategia hacia la ejecución operativa. Hoy, a través de Pulso, Carla lidera una propuesta especializada en digitalizar las mejores prácticas de gestión para empresas, combinando tecnología, metodologías ágiles y visión estratégica. Su enfoque está orientado a resultados concretos: ayudar a cada empresa a profesionalizar su gestión, mejorar sus procesos y alcanzar sus objetivos de negocio de forma sostenible.
+      </p>
+      <div class="team-social">
+        <a href="https://www.linkedin.com/in/carla-pizarro-riquelme/" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div>
+<!-- Methodology Section -->
+<section class="section" id="metodologia" style="background-color: var(--primary-light);">
+  <div class="section-title">
+    <h2>Nuestra Metodología</h2>
+    <p>Un proceso probado para garantizar resultados tangibles</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card" style="border-top-color: var(--secondary);">
+      <div class="service-icon" style="color: var(--secondary);">
+        <i class="fas fa-search"></i>
+      </div>
+      <h3>Diagnóstico Inicial</h3>
+      <p>Evaluación gratuita de tus procesos actuales y necesidades específicas.</p>
+    </div>
+    <div class="service-card" style="border-top-color: var(--secondary);">
+      <div class="service-icon" style="color: var(--secondary);">
+        <i class="fas fa-puzzle-piece"></i>
+      </div>
+      <h3>Implementación Modular</h3>
+      <p>Comenzamos por las áreas más críticas con un plan escalable.</p>
+    </div>
+    <div class="service-card" style="border-top-color: var(--secondary);">
+      <div class="service-icon" style="color: var(--secondary);">
+        <i class="fas fa-chalkboard-teacher"></i>
+      </div>
+      <h3>Capacitación</h3>
+      <p>Sesiones prácticas semanales con tu equipo para adopción efectiva.</p>
+    </div>
+    <div class="service-card" style="border-top-color: var(--secondary);">
+      <div class="service-icon" style="color: var(--secondary);">
+        <i class="fas fa-life-ring"></i>
+      </div>
+      <h3>Soporte Continuo</h3>
+      <p>Acompañamiento durante toda la implementación y posterior.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Oportunidades -->
+<section class="section" id="oportunidades">
+  <div class="section-title">
+    <h2>Oportunidades Laborales</h2>
+    <p>Únete a nuestro equipo y optimiza los procesos de nuestros clientes.</p>
+  </div>
+  <div style="text-align:center;">
+    <a class="btn" download href="Rol_Programador_ClickUp.pdf" style="font-size: 1rem; padding: 1rem 2rem; margin-top: 1rem;">
+      Programador de Procesos en ClickUp
+    </a>
+    <p style="margin-top: 0.5rem;">Haz clic para descargar la descripción del cargo.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>¿Listo para transformar tu empresa?</h2>
+  <p>Agenda tu diagnóstico inicial gratuito y descubre cómo podemos hacer tu empresa más ordenada y eficiente.</p>
+  <a class="btn" href="#contacto" style="background-color: var(--light); color: var(--primary);">
+    Contactar a Pulso Soluciones
+  </a>
+</section>
+
+<!-- Footer -->
+<footer id="contacto">
+  <div class="footer-container">
+    <div class="footer-about">
+      <div class="footer-logo">
+        <!-- NUEVO LOGO EN FOOTER -->
+        <img alt="Pulso Soluciones" loading="lazy" src="pulso-logo.png" style="height: 100px;"/>
+      </div>
+      <p>Optimizamos la gestión de tu empresa con herramientas simples, efectivas y personalizadas para hacerla más ordenada y eficiente.</p>
+    </div>
+    <div class="footer-links">
+      <h3>Enlaces Rápidos</h3>
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#metodologia">Metodología</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h3>Contacto</h3>
+      <ul>
+        <li><a href="mailto:contacto@pulsosoluciones.cl"><i class="fas fa-envelope"></i> contacto@pulsosoluciones.cl</a></li>
+        <li><i class="fas fa-map-marker-alt"></i> La Capitania 80, Las Condes, Santiago</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2023 Pulso Soluciones. Todos los derechos reservados.</p>
+  </div>
+</footer>
 
 <script>
-  // Año automático en el footer
-  document.getElementById('year').textContent = new Date().getFullYear();
+  // Smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+          });
+      });
+  });
+
+  // Efecto header scroll
+  window.addEventListener('scroll', function() {
+      const header = document.getElementById('main-header');
+      if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+      } else {
+          header.classList.remove('scrolled');
+      }
+  });
+
+  // Menú hamburguesa
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('show');
+    });
+  });
 </script>
+
 </body>
 </html>
