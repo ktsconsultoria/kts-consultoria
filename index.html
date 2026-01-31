@@ -12,9 +12,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>
 
-        :root {
+<style>
+/* =========================================
+   CSS CONSOLIDADO (Pulso Soluciones)
+   - Mismo look visual que la versión anterior
+   - Un solo bloque para evitar duplicación y parches
+   - Se preserva el ORDEN original de las reglas
+   ========================================= */
+
+
+/* --- Bloque original #1 --- */
+
+:root {
             /* Colores Pulso (coral, negro, blanco) */
             --primary: #FF7452;
             --primary-dark: #E45F40;
@@ -579,91 +589,7 @@
 }
 
 
-/* --- ClickUp --- */
-.clickup-kicker{
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  color: var(--dark);
-  margin-bottom: 0.9rem;
-}
 
-.clickup-list{
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.2rem;
-  display: grid;
-  gap: 0.7rem;}
-
-.clickup-list li{
-  display: flex;
-  gap: 0.6rem;
-  line-height: 1.35;
-  color: var(--gray);
-}
-
-.clickup-list li::before{
-  content: "✓";
-  font-weight: 700;
-  color: var(--primary);
-  margin-top: 0.05rem;
-}
-
-.clickup-close{
-  color: var(--gray);
-margin-bottom: 1.2rem;
-}
-
-.clickup-logo{
-  display: flex;
-  justify-content: flex-start;
-}
-
-.clickup-logo img{
-  height: 56px;
-  width: auto;
-}
-
-
-/* --- ClickUp: overrides para consistencia visual --- */
-#clickup .clickup-close{
-  color: var(--gray) !important;
-  font-weight: 400 !important;
-}
-
-#clickup .clickup-list,
-#clickup .clickup-kicker,
-#clickup .clickup-intro,
-#clickup .clickup-close{
-  margin-left: 0 !important;
-}
-
-#clickup .clickup-logo{
-  justify-content: flex-start !important;
-}
-
-
-
-/* --- ClickUp: alineación idéntica a secciones .section --- */
-#clickup{
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
-  box-sizing: border-box;
-}
-
-#clickup h3,
-#clickup p,
-#clickup ul{
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-}
-
-#clickup .clickup-kicker{
-  margin-top: 0.5rem !important;
-}
-
-</style>
 <meta content="consultoría pymes chile, digitalización de procesos, clickup chile, eficiencia operativa, pulso soluciones" name="keywords"/><meta content="Pulso Soluciones" name="author"/><style>
 /* Responsive horizontal scroll nav fix */
 nav {
@@ -682,68 +608,7 @@ nav a {
   white-space: nowrap;
 }
 
-/* --- ClickUp sección alineada con layout general --- */
-.clickup-wrapper{
-  max-width: 1200px;
-  margin: 0 auto;
-  color: var(--gray);
-}
-
-#clickup h2{
-  font-family: var(--font-heading);
-  color: var(--dark);
-  margin-bottom: 0.75rem;
-}
-
-.clickup-intro{
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.clickup-kicker{
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  color: var(--dark);
-  margin-bottom: 0.9rem;
-}
-
-.clickup-list{
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.2rem;
-  display: grid;
-  gap: 0.7rem;
-}
-
-.clickup-list li{
-  display: flex;
-  gap: 0.6rem;
-  line-height: 1.35;
-}
-
-.clickup-list li::before{
-  content: "✓";
-  font-weight: 700;
-  color: var(--primary);
-  margin-top: 0.05rem;
-}
-
-.clickup-close{
-  color: var(--dark);
-  margin-bottom: 1.2rem;
-}
-
-.clickup-logo{
-  display: flex;
-  justify-content: center;
-}
-
-.clickup-logo img{
-  height: 56px;
-  width: auto;
-}
-
-</style><style>
+<style>
 /* Hamburguesa responsive */
 .menu-toggle {
   display: none;
@@ -994,68 +859,7 @@ nav a {
 }
 
 
-/* --- ClickUp sección alineada con layout general --- */
-.clickup-wrapper{
-  max-width: 1200px;
-  margin: 0 auto;
-  color: var(--gray);
-}
-
-#clickup h2{
-  font-family: var(--font-heading);
-  color: var(--dark);
-  margin-bottom: 0.75rem;
-}
-
-.clickup-intro{
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.clickup-kicker{
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  color: var(--dark);
-  margin-bottom: 0.9rem;
-}
-
-.clickup-list{
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.2rem;
-  display: grid;
-  gap: 0.7rem;
-}
-
-.clickup-list li{
-  display: flex;
-  gap: 0.6rem;
-  line-height: 1.35;
-}
-
-.clickup-list li::before{
-  content: "✓";
-  font-weight: 700;
-  color: var(--primary);
-  margin-top: 0.05rem;
-}
-
-.clickup-close{
-  color: var(--dark);
-  margin-bottom: 1.2rem;
-}
-
-.clickup-logo{
-  display: flex;
-  justify-content: center;
-}
-
-.clickup-logo img{
-  height: 56px;
-  width: auto;
-}
-
-</style><style>
+<style>
 
 /* --- Ajuste: Beneficios sin fondo gris (look más simple) --- */
 .hero-highlights .highlight{
@@ -1067,23 +871,64 @@ nav a {
 }
 
 
-/* --- ClickUp sección alineada con layout general --- */
-.clickup-wrapper{
+
+
+<style>
+/* --- FIX alineación sección ClickUp --- */
+#clickup h3,
+#clickup .clickup-list,
+#clickup .clickup-close,
+#clickup .clickup-logo {
+  max-width: 1100px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+
+
+/* --- Bloque original #2 --- */
+
+/* --- FIX final: alinear "Por qué funciona" exactamente con el bloque superior --- */
+#clickup .clickup-kicker,
+#clickup .clickup-list,
+#clickup .clickup-close,
+#clickup .clickup-logo{
+  max-width: 1100px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+}
+
+
+
+/* --- Bloque original #3 --- */
+
+/* ===============================
+   LAYOUT SYSTEM (GLOBAL)
+   =============================== */
+
+.section{
   max-width: 1200px;
   margin: 0 auto;
-  color: var(--gray);
+  padding: 3.5rem 2rem;
+  box-sizing: border-box;
 }
 
-#clickup h2{
-  font-family: var(--font-heading);
-  color: var(--dark);
-  margin-bottom: 0.75rem;
+.section-inner{
+  max-width: 900px;
 }
 
-.clickup-intro{
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+.section-title{
+  margin-bottom: 2.5rem;
 }
+
+.section-title p{
+  max-width: 900px;
+}
+
+/* ===============================
+   CLICKUP SECTION (SIMPLIFIED)
+   =============================== */
 
 .clickup-kicker{
   font-family: var(--font-heading);
@@ -1098,62 +943,111 @@ nav a {
   margin: 0 0 1.2rem;
   display: grid;
   gap: 0.7rem;
+  color: var(--gray);
 }
 
 .clickup-list li{
   display: flex;
   gap: 0.6rem;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .clickup-list li::before{
   content: "✓";
   font-weight: 700;
   color: var(--primary);
-  margin-top: 0.05rem;
 }
 
 .clickup-close{
-  color: var(--dark);
-  margin-bottom: 1.2rem;
+  color: var(--gray);
+  margin-bottom: 1.5rem;
 }
 
 .clickup-logo{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .clickup-logo img{
   height: 56px;
-  width: auto;
 }
 
-</style>
+/* ===============================
+   RESPONSIVE
+   =============================== */
 
-<style>
-/* --- FIX alineación sección ClickUp --- */
-#clickup h3,
-#clickup .clickup-list,
-#clickup .clickup-close,
-#clickup .clickup-logo {
-  max-width: 1100px;
-  margin-left: auto !important;
-  margin-right: auto !important;
+@media (max-width: 768px){
+  .section{
+    padding: 3rem 1.25rem;
+  }
 }
-</style>
 
 
-<style>
-/* --- FIX final: alinear "Por qué funciona" exactamente con el bloque superior --- */
-#clickup .clickup-kicker,
-#clickup .clickup-list,
-#clickup .clickup-close,
-#clickup .clickup-logo{
-  max-width: 1100px;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: 0 !important;
+
+
+
+
+.hero-highlights .highlight{
+  position: relative;
+  padding: 0.6rem 0 0.7rem !important; /* menos aire vertical */
 }
+
+.hero-highlights .highlight::after{
+  content: "";
+  display: block;
+  width: 70%;           /* línea 30% más corta */
+  margin: 0.6rem auto 0;
+  border-bottom: 1px solid rgba(0,0,0,0.18);
+}
+
+
+
+/* Línea separadora solo entre ítems */
+.hero-highlights .highlight:not(:last-child)::after{
+  content: "";
+  display: block;
+  width: 70%;
+  margin: 0.55rem auto 0;
+  border-bottom: 1px solid rgba(0,0,0,0.18);
+}
+
+
+/* ===============================
+   FIX BENEFICIOS HERO (v3)
+   - Quita "marcos" / cajas
+   - Línea corta (70%) centrada BAJO cada ítem (entre ítems)
+   - Menor separación vertical
+   =============================== */
+
+/* Asegura que cada beneficio sea un bloque (no flex) */
+.hero-highlights .highlight{
+  position: relative;
+  display: block !important;
+  text-align: center;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0.55rem 0 0.95rem !important; /* menos distancia entre beneficios */
+  margin: 0 !important;
+}
+
+/* Quita cualquier borde inferior heredado */
+.hero-highlights .highlight{
+  border-bottom: none !important;
+}
+
+/* Línea separadora corta entre beneficios (no al lado) */
+.hero-highlights .highlight:not(:last-child)::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0.35rem;
+  transform: translateX(-50%);
+  width: 70%;
+  border-bottom: 1px solid rgba(0,0,0,0.18);
+}
+
 </style>
 
 </head>
@@ -1213,7 +1107,7 @@ nav a {
 </div>
 </section>
 <hr/>
-<!-- ClickUp como plataforma tecnológica -->
+<!-- Tu operación conectada -->
 <section class="section" id="clickup"><div class="section-title"><h2>ClickUp como plataforma tecnológica</h2><p>Conectamos personas, procesos y herramientas digitales existentes utilizando plataformas online como ClickUp, permitiendo ordenar la operación sin reemplazar lo que ya funciona y escalar según las prioridades del negocio.</p></div><h3 class="clickup-kicker">Por qué funciona</h3><ul class="clickup-list">
 <li>Clase mundial, impacto inmediato</li>
 <li>Soluciones modulares, sin amarres ni código</li>
