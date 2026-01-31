@@ -881,6 +881,29 @@ nav a {
   border-bottom: 1px solid rgba(0,0,0,0.18);
 }
 
+
+/* ===============================
+   Botón outline coral (reutilizable)
+   =============================== */
+.btn-outline-primary{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--primary);
+  background-color: transparent;
+  color: var(--primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.btn-outline-primary:hover{
+  background-color: var(--primary);
+  color: #FFFFFF;
+}
+
 </style>
 
 </head>
@@ -940,7 +963,7 @@ nav a {
 </div>
 </section>
 <hr/>
-<!-- Plataforma operacional online -->
+<!-- ClickUp como plataforma tecnológica -->
 <section class="section" id="clickup"><div class="section-title"><h2>Plataforma operacional online</h2><p>Conectamos personas, procesos y herramientas digitales existentes utilizando plataformas online como ClickUp, permitiendo ordenar la operación sin reemplazar lo que ya funciona y escalar según las prioridades del negocio.</p></div><h3 class="clickup-kicker">Por qué funciona</h3><ul class="clickup-list">
 <li>Clase mundial, impacto inmediato</li>
 <li>Soluciones modulares, sin amarres ni código</li>
@@ -1004,6 +1027,13 @@ nav a {
 </div>
 <div class="impacto-wrap fade-in-up">
 <img alt="Impacto y retorno Pulso Soluciones" loading="lazy" src="Impacto y retorno.jpg"/>
+
+<div style="text-align:center; margin-top: 1.6rem;">
+  <a class="btn-outline-primary" href="https://calendar.app.google/bx8ZpcAhPuHKudjCA" target="_blank">
+    Quiero agendar una conversación
+  </a>
+</div>
+
 </div>
 </section>
 <hr/>
@@ -1178,4 +1208,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script></body>
 </html>
-
